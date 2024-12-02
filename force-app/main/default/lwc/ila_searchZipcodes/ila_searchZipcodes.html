@@ -1,0 +1,37 @@
+<template>
+     <lightning-card>
+        <div class="search-container">   
+            <template if:true={showInputs}>
+                        <lightning-combobox
+                            name="countryselect"
+                            label="Select Country" 
+                            options={countryOptions}
+                            value={country} 
+                            onchange={handleCountryChange}
+                            required >
+                        </lightning-combobox>
+                        <lightning-input 
+                            type="text" 
+                            label="Enter ZIP Code" 
+                            value={zipCode} 
+                            onchange={handleZipCodeChange} 
+                            placeholder="e.g.... 12345">
+                        </lightning-input>
+                    <lightning-button 
+                        label="Search" 
+                        variant="brand" 
+                        onclick={fetchDetails}>
+                    </lightning-button> 
+                     <div class="result">
+                        {errorResponse}
+                     </div>
+                 </template>             
+            <!-- Show results or error message -->
+            <template if:false={showInputs}>
+                <div class="result">
+                    <c-ila_show-country-response response={response} onback={handleBack}></c-ila_show-country-response>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
