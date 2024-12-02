@@ -31,7 +31,7 @@ trigger ILA_HighRiskEventTrigger on ILA_High_Risk_Event__e (after insert) {
         }
         if (!caseLst.isEmpty()) {
             insert caseLst;
-            system.debug('caseLst'+caseLst);
+           // system.debug('caseLst'+caseLst);
         }
     }catch(exception e){
         system.debug(e.getMessage());
